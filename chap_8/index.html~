@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Test1</title>
+<!--    <link rel="stylesheet" href="css/bootstrap.min.css">    -->
+<!--    <link rel="stylesheet" href="css/style.css">   -->
+<!--    <script type="text/javascript" src="js/d3.js"> -->
+    <script src="js/d3.v4.js"></script>    
+  </head>
+  <body>
+          This is a test
+	  <script type ="text/javascript">
+	    var dataset = [5,10,15,20,25]
+
+	    d3.select("body")
+	    .selectAll("p")
+	    .data(dataset)
+	    .enter()
+	    .append("p")
+	    .text(function(d) { return "I can count up to "+d;})
+	    .style("color",function(d){
+	      if (d > 15){
+	        return "red"
+	      } else {
+	      return "black";
+	      }
+	    
+	    });
+	    
+	    
+	    
+	    var rowConverter = function(d){
+	      return {
+	        Food: d.Food,
+	        Deliciousness: parseFloat(d.Deliciousness)
+	      };
+	    }
+	    
+	    d3.csv("data/food.csv", rowConverter,function(data){
+	    console.log(data);
+	    });
+	  </script> 
+  </body>
+</html>
